@@ -1,6 +1,5 @@
 package de.jan.systemutils
 
-import oshi.SystemInfo
 import oshi.software.os.OSFileStore
 
 

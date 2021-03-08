@@ -6,12 +6,6 @@ import oshi.hardware.GraphicsCard
 import oshi.hardware.HardwareAbstractionLayer
 import oshi.hardware.NetworkIF
 import oshi.software.os.OperatingSystem
-import java.util.*
-import java.util.Arrays
-
-import oshi.software.os.OSProcess
-import oshi.software.os.windows.WindowsOSProcess
-import oshi.util.GlobalConfig
 
 
 object Utils {
