@@ -1,24 +1,27 @@
 package de.jan.systemutils
 
+import com.sun.management.OperatingSystemMXBean
 import oshi.SystemInfo
 import oshi.hardware.CentralProcessor
-import oshi.util.Util
+import java.lang.management.ManagementFactory
+
+
+
 
 
 class CPU(private val si: SystemInfo) {
 
-    private var prevTicks = LongArray(CentralProcessor.TickType.values().size)
+    var prevTicks = LongArray(CentralProcessor.TickType.values().size)
+
 
     fun getCPUUsage(): Double {
-        val cpuLoad: Double = getProcessor().getSystemCpuLoadBetweenTicks(prevTicks) * 100
-        prevTicks = getProcessor().systemCpuLoadTicks
-        Util.sleep(2000)
-        return cpuLoad
+        val osBean: OperatingSystemMXBean = ManagementFactory.getPlatformMXBean(
+            OperatingSystemMXBean::class.java)
+        return osBean.systemCpuLoad + osBean.processCpuLoad
     }
 
     fun getProcessor() : CentralProcessor {
         return si.hardware.processor
     }
-
 
 }

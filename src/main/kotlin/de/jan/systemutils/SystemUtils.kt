@@ -6,6 +6,13 @@ import oshi.hardware.GraphicsCard
 import oshi.hardware.HardwareAbstractionLayer
 import oshi.hardware.NetworkIF
 import oshi.software.os.OperatingSystem
+import java.util.*
+import oshi.util.FormatUtil
+
+import java.util.Arrays
+import java.util.ArrayList
+import java.io.BufferedInputStream
+import java.net.URL
 
 
 object Utils {
