@@ -11,6 +11,6 @@ This is just a small package for me using [OSHI](https://github.com/oshi/oshi).
 <dependency>
 	<groupId>com.github.jan-tennert</groupId>
 	<artifactId>SystemUtils</artifactId>
-	<version>2.0</version>
+	<version>2.5</version>
 </dependency>
 ```
