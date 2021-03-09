@@ -5,15 +5,8 @@ import oshi.hardware.ComputerSystem
 import oshi.hardware.GraphicsCard
 import oshi.hardware.HardwareAbstractionLayer
 import oshi.hardware.NetworkIF
+import oshi.software.os.OSProcess
 import oshi.software.os.OperatingSystem
-import java.util.*
-import oshi.util.FormatUtil
-
-import java.util.Arrays
-import java.util.ArrayList
-import java.io.BufferedInputStream
-import java.net.URL
-
 
 object Utils {
 
@@ -31,6 +24,19 @@ fun Double.round(decimal_places: Int) : Double {
 
 fun Float.round(decimal_places: Int) : Float {
     return String.format("%.${decimal_places}f", this).replace(",", ".").toFloat()
+}
+
+fun OSProcess.kill() : Boolean {
+    val pid = this.processID
+    val family = SystemUtils().getOSName().toLowerCase()
+    if(family.contains("windows")) {
+        Runtime.getRuntime().exec("taskkill /PID $pid")
+        return true
+    } else if(family.contains("linux")) {
+        Runtime.getRuntime().exec("sudo kill $pid")
+        return true
+    }
+    return false
 }
 
 class SystemUtils {
@@ -71,6 +77,10 @@ class SystemUtils {
 
     fun getOSName() : String {
         return si.operatingSystem.family
+    }
+
+    fun getProcesses() : List<OSProcess> {
+        return si.operatingSystem.processes
     }
 
 }
