@@ -5,11 +5,11 @@ class RaspberryPiFan {
     private val fanPath = "/home/pi/Fan/fan_control.py"
 
     fun enableFan() {
-        "$fanPath --on".execute()
+        Runtime.getRuntime().exec("$fanPath --on")
     }
 
     fun disableFan() {
-        "$fanPath --on".execute()
+        Runtime.getRuntime().exec("$fanPath --off")
     }
 
 
