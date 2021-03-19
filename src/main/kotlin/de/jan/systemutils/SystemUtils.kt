@@ -7,10 +7,6 @@ import oshi.hardware.HardwareAbstractionLayer
 import oshi.hardware.NetworkIF
 import oshi.software.os.OSProcess
 import oshi.software.os.OperatingSystem
-import java.io.DataInputStream
-import java.io.DataOutputStream
-import java.net.Socket
-import kotlin.concurrent.thread
 
 object Utils {
 
