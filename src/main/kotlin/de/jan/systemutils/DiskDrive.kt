@@ -18,7 +18,7 @@ class DiskDrive(private val fs: OSFileStore) {
     }
 
     fun getUsedStorage() : StorageUnit {
-        return StorageUnit(fs.usableSpace.toDouble())
+        return StorageUnit(fs.totalSpace.toDouble() - fs.freeSpace.toDouble())
     }
 
     fun getTotalStorage() : StorageUnit {
@@ -30,7 +30,7 @@ class DiskDrive(private val fs: OSFileStore) {
     }
 
     fun getUsedPercent() : Double {
-        return Utils.calculatePercentage(fs.usableSpace.toDouble(), fs.totalSpace.toDouble())
+        return Utils.calculatePercentage(fs.totalSpace.toDouble(),fs.totalSpace.toDouble() - fs.freeSpace.toDouble())
     }
 
     fun getFileStore() : OSFileStore {
