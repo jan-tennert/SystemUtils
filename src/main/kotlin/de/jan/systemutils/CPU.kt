@@ -13,7 +13,7 @@ class CPU(private val si: SystemInfo) {
 
     var prevTicks = LongArray(CentralProcessor.TickType.values().size)
 
-
+    @Deprecated("Use oshi instead")
     fun getCPUUsage(): Double {
         val osBean: OperatingSystemMXBean = ManagementFactory.getPlatformMXBean(
             OperatingSystemMXBean::class.java)
